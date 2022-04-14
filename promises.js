@@ -66,12 +66,26 @@ function getCertificate() {
     return promise;
 }
 
-enroll()
-    .then(progress)
-    .then(getCertificate)
-    .then(function (value) {
-        console.log(value)
-    })
-    .catch(function (error) {
+// enroll()
+//     .then(progress)
+//     .then(getCertificate)
+//     .then(function (value) {
+//         console.log(value)
+//     })
+//     .catch(function (error) {
+//         console.log(error)
+//     })
+
+
+async function course() {
+    try {
+        await enroll()
+        await progress()
+        let message = await getCertificate()
+        console.log(message)
+    } catch (error) {
         console.log(error)
-    })
+    }
+}
+
+course()
